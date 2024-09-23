@@ -1,0 +1,32 @@
+## 1768. Merge Strings Alternately
+You are given two strings word1 and word2. Merge the strings by adding letters in alternating order, starting with word1. If a string is longer than the other, append the additional letters onto the end of the merged string.
+Return the merged string.
+
+Soln:
+class Solution:
+    def mergeAlternately(self, word1: str, word2: str) -> str:
+        # Initialize the result list to store merged characters
+        merged = []
+        
+        # Get the length of the shorter word
+        min_len = min(len(word1), len(word2))
+        
+        # Add alternating characters from both words up to the length of the shorter word
+        for i in range(min_len):
+            merged.append(word1[i])
+            merged.append(word2[i])
+        
+        # Append the remaining part of the longer word, if any
+        merged.append(word1[min_len:])
+        merged.append(word2[min_len:])
+        
+        # Join the list into a single string and return
+        return ''.join(merged)
+
+# Example usage
+solution = Solution()
+word1 = "abc"
+word2 = "defg"
+print(solution.mergeAlternately(word1, word2))  # Output: "adbcef"
+
+
